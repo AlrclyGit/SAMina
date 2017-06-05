@@ -1,0 +1,8 @@
+<!--wxml是编写小程序结构的-->
+<view class="container">
+  <image class="user-avatar" src="/pages/images/xjj.png"></image>
+  <text class="user-name">Hello,俊介</text>
+  <view class="moto-container">
+    <text class="moto">开启小程序之旅</text>
+  </view>
+</view> 
