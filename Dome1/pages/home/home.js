@@ -1,6 +1,17 @@
 // home.js
 Page({
 
+  onTap:function(){
+
+    // wx.navigateTo({
+    //   url: '../posts/post'
+    // });
+
+    wx.redirectTo({
+      url: '../posts/post',
+    });
+  },
+
   /**
    * 页面的初始数据
    */
