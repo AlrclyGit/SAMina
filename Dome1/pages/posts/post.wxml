@@ -1,0 +1,43 @@
+<view class="showme">
+    <swiper indicator-dots="true" autoplay="true" interval="2000">
+        <swiper-item>
+          <image src="/images/swiper1.jpg"></image>
+        </swiper-item>
+        <swiper-item>
+          <image src="/images/swiper2.gif"></image>
+        </swiper-item>
+        <swiper-item>
+          <image src="/images/swiper3.gif"></image>
+        </swiper-item>
+    </swiper>
+    <view class="post-container">
+        <view class="post-author-date">
+          <image class="post-author" src="{{img.post_img}}"></image>
+          <text class="post-date">{{data}}</text>
+        </view>
+        <text class="post-title">{{title}}</text>
+        <image wx:if="{{img_condition}}" class="post-image" src="{{img.author_img}}"></image>
+        <text class="post-content">{{content}}</text>
+        <view class="post-like">
+           <image class="post-like-image" src="/images/xjj.png"></image>
+           <text class="post-like-font">{{collect_num}}</text>
+           <image class="post-like-image" src="/images/xjj.png"></image>
+           <text class="post-like-font">{{view_num}}</text>
+        </view>
+    </view>
+        <view class="post-container">
+        <view class="post-author-date">
+          <image class="post-author" src="/images/xjj.png"></image>
+          <text class="post-date">Nov 25 2016</text>
+        </view>
+        <text class="post-title">正确的KADO</text>
+        <image class="post-image" src="/images/kado.jpg"></image>
+        <text class="post-content">《正解的卡多》是由东映动画原作并负责制作，村田和也指导，野崎窗系列构成并脚本的原创CG电视动画。</text>
+        <view class="post-like">
+           <image class="post-like-image" src="/images/xjj.png"></image>
+           <text class="post-like-font">92</text>
+           <image class="post-like-image" src="/images/xjj.png"></image>
+           <text class="post-like-font">208</text>
+        </view>
+    </view>
+</view>

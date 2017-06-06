@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/posts/post",
     "pages/home/home"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#b2d4db",
-    "navigationBarTitleText": "俊介的小程序"
+    "navigationBarBackgroundColor": "#b2d4db"
   }
 }
