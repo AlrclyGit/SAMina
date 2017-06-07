@@ -1,19 +1,21 @@
 <import src="post-item/post-item-template.wxml" />
 
 <view class="showme">
-    <swiper indicator-dots="true" autoplay="true" interval="2000">
-        <swiper-item>
-          <image src="/images/swiper1.jpg"></image>
-        </swiper-item>
-        <swiper-item>
-          <image src="/images/swiper2.gif"></image>
-        </swiper-item>
-        <swiper-item>
-          <image src="/images/swiper3.gif"></image>
-        </swiper-item>
-    </swiper>
+  <swiper indicator-dots="true" autoplay="true" interval="2000">
+    <swiper-item>
+      <image src="/images/swiper1.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/swiper2.gif"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/swiper3.gif"></image>
+    </swiper-item>
+  </swiper>
 
-    <block wx:for="{{posts_key}}" wx:for-item="item">
-      <template is="postItem" data="{{item}}" />
-    </block>
+  <block wx:for="{{posts_key}}" wx:for-item="item">
+    <view catchtap="onPostTap" data-postId="{{item.postId}}">
+      <template is="postItem" data="{{...item}}" />
+    </view>
+  </block>
 </view>

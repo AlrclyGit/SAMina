@@ -1,5 +1,6 @@
 var local_database = [
   {
+    postId:0,
     data: "Sep 18 2016",
     title: "埃罗芒阿老师",
     avatar: "/images/xjj.png",
@@ -9,6 +10,7 @@ var local_database = [
     collection: "96",
   },
   {
+    postId: 1,
     data: "Nov 25 2016",
     title: "正确的KADO",
     avatar: "/images/xjj.png",
@@ -18,6 +20,7 @@ var local_database = [
     collection: "96",
   },
   {
+    postId: 2,
     data: "Sep 18 2016",
     title: "埃罗芒阿老师2",
     avatar: "/images/xjj.png",
@@ -27,6 +30,7 @@ var local_database = [
     collection: "96",
   },
   {
+    postId: 3,
     data: "Nov 25 2016",
     title: "正确的KADO3",
     avatar: "/images/xjj.png",
@@ -36,6 +40,7 @@ var local_database = [
     collection: "96",
   },
   {
+    postId: 4,
     data: "Sep 18 2016",
     title: "埃罗芒阿老师3",
     avatar: "/images/xjj.png",
@@ -45,6 +50,7 @@ var local_database = [
     collection: "96",
   },
   {
+    postId: 5,
     data: "Nov 25 2016",
     title: "正确的KADO3",
     avatar: "/images/xjj.png",
@@ -54,6 +60,7 @@ var local_database = [
     collection: "96",
   },
   {
+    postId: 6,
     data: "Sep 18 2016",
     title: "埃罗芒阿老师4",
     avatar: "/images/xjj.png",
@@ -63,6 +70,7 @@ var local_database = [
     collection: "96",
   },
   {
+    postId: 7,
     data: "Nov 25 2016",
     title: "正确的KADO4",
     avatar: "/images/xjj.png",
