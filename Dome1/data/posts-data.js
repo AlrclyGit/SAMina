@@ -1,6 +1,6 @@
 var local_database = [
   {
-    postId:0,
+    postId: 0,
     data: "Sep 18 2016",
     title: "埃罗芒阿老师",
     avatar: "/images/xjj.png",
@@ -8,6 +8,10 @@ var local_database = [
     content: "《情色漫画老师》是日本轻小说作家伏见司继《我的妹妹哪有这么可爱！》完结之后的轻小说新作，插画同样由负责《我的妹妹哪有这么可爱！》插画的神崎广绘制。",
     reading: "112",
     collection: "96",
+    headImagSrc: "/images/gkls.jpg",
+    author: "林俊杰",
+    dateTime: "12小时前",
+    detail: "《情色漫画老师》是日本轻小说作家伏见司继《我的妹妹哪有这么可爱！》完结之后的轻小说新作，插画同样由负责《我的妹妹哪有这么可爱！》插画的神崎广绘制。在2013年10月6日的“电击文库20周年纪念活动”上，伏见司公布了最新执笔小说《情色漫画老师》的消息[1]  。小说第1卷于2013年12月10日面市。在动画版开播前，1~6卷累计发行部数约为60万册[2]  ，在2017年4月动画版开播时，1~8卷累计发行量突破100万册[3]  。"
   },
   {
     postId: 1,
@@ -79,7 +83,7 @@ var local_database = [
     reading: "152",
     collection: "96",
   }
-] 
+]
 
 module.exports = {
   postList: local_database

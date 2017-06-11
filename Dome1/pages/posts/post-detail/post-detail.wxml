@@ -1,13 +1,13 @@
 <view class="container">
-  <image class="head-image" src="/images/gkls.jpg"></image>
+  <image class="head-image" src="{{postData.headImagSrc}}"></image>
   <image class="audio" src="/images/xjj.png"></image>
   <view class="author-date">
-    <image class="avatar" src="/images/xjj.png"></image>
-    <text class="author">生田绘梨花</text>
+    <image class="avatar" src="{{postData.avatar}}"></image>
+    <text class="author">{{postData.author}}</text>
     <text class="const-text">发表于</text>
-    <text class="date">昨天</text>
+    <text class="date">{{postData.dateTime}}</text>
   </view>
-  <text class="title">埃罗芒阿老师</text>
+  <text class="title">{{postData.title}}</text>
   <view class="tool">
     <view class="circle-img">
       <image src="/images/xjj.png"></image>
@@ -15,5 +15,5 @@
     </view>
     <view class="horizon"></view>
   </view>
-  <text class="detail">埃罗芒阿老师埃罗芒阿老师埃罗芒阿老师埃罗芒阿老师埃罗芒阿老师埃罗芒阿老师埃罗芒阿老师</text>
+  <text class="detail">{{postData.detail}}</text>
 </view>
