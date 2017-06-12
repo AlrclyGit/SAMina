@@ -20,6 +20,18 @@ Page({
     this.setData({
       postData: postData
     });
+
+    wx.setStorageSync("key", "风暴英雄")
+  },
+
+  onCollectionTap:function(event){
+    var game = wx.getStorageSync('key');
+    console.log(game)
+  },
+
+  onShareTap:function(event){
+    //wx.removeStorageSync('key');
+    wx.clearStorageSync();
   },
 
   /**
