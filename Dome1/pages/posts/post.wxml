@@ -3,13 +3,13 @@
 <view class="showme">
   <swiper indicator-dots="true" autoplay="true" interval="2000">
     <swiper-item>
-      <image src="/images/swiper1.jpg"></image>
+      <image src="/images/wx.png"></image>
     </swiper-item>
     <swiper-item>
-      <image src="/images/swiper2.gif"></image>
+      <image src="/images/vr.png"></image>
     </swiper-item>
     <swiper-item>
-      <image src="/images/swiper3.gif"></image>
+      <image src="/images/iqiyi.png"></image>
     </swiper-item>
   </swiper>
 
