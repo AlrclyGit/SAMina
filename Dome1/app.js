@@ -34,5 +34,6 @@ App({
   globalData:{
       g_isPalyingMusic:false,
       g_currentMusicPolstId:null
-  }
+  },
+
 })

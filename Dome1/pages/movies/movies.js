@@ -1,26 +1,11 @@
-// home.js
+// movies.js
 Page({
-
-  onTap:function(){
-
-    // wx.navigateTo({
-    //   url: '../posts/post'
-    // });
-
-    // wx.redirectTo({
-    //   url: '../posts/post',
-    // });
-
-    wx.switchTab({
-      url: '../posts/post'
-    })
-  },
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    
   },
 
   /**
