@@ -1,14 +1,15 @@
 // post-deatil.js
 
 var postsData = require('../../../data/posts-data.js')
+var app = getApp();
 
 Page({
 
   /**
-   * 页面的初始数据
+   * --页面的初始数据
    */
   data: {
-
+    isPlayingMusic:false
   },
 
 
@@ -17,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     var postId = options.id;
+
     this.data.currentPostId = postId;
     var postData = postsData.postList[postId];
     this.setData({
@@ -35,12 +37,63 @@ Page({
       postsCollected[postId] = false;
       wx.setStorageSync("posts_collected", postsCollected);
     }
+
+    if (app.globalData.g_isPalyingMusic && app.globalData.g_currentMusicPolstId === postId){
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
+
+    this.setMusicMonitor();
+
   },
+
+
+  /**
+   * --监听音乐播放
+   */
+  setMusicMonitor:function(){
+     var that = this;
+     wx.onBackgroundAudioPlay(function () {
+       that.setData({
+         isPlayingMusic: true
+       })
+       app.globalData.g_isPalyingMusic = true
+       app.globalData.g_currentMusicPolstId = that.data.currentPostId
+     });
+
+     wx.onBackgroundAudioPause(function () {
+       that.setData({
+         isPlayingMusic: false
+       })
+       app.globalData.g_isPalyingMusic = false
+       app.globalData.g_currentMusicPolstId = null;
+     });
+   },
 
   /**
    * --监听收藏点击
    */
   onColletionTap: function (event) {
+    //this.getPostCollectedSyc)();
+    this.getPostCollectedAsy();
+  },
+
+  getPostCollectedAsy: function () {
+    var that = this;
+    wx.getStorage({
+      key: "posts_collected",
+      success: function (res) {
+        var postsCollected = res.data;
+        var postcolledted = postsCollected[that.data.currentPostId];
+        postcolledted = !postcolledted;
+        postsCollected[that.data.currentPostId] = postcolledted;
+        that.showTosat(postsCollected, postcolledted);
+      }
+    })
+  },
+
+  getPostCollectedSyc: function () {
     var postsCollected = wx.getStorageSync('posts_collected');
     var postcolledted = postsCollected[this.data.currentPostId];
     postcolledted = !postcolledted;
@@ -52,12 +105,12 @@ Page({
   /**
    * --Model弹窗
    */
-  showModel: function (postsCollected, postcolledted ) {
+  showModel: function (postsCollected, postcolledted) {
     var that = this;
     //显示弹窗
     wx.showModal({
       title: '收藏',
-      content: postcolledted ? '确认收藏该文章吗？' : '确认取消收藏该文章吗？' ,
+      content: postcolledted ? '确认收藏该文章吗？' : '确认取消收藏该文章吗？',
       showCancel: 'true',
       cancelText: '取消',
       cancelColor: '#333',
@@ -100,22 +153,53 @@ Page({
   /**
    * --ShareTap弹窗
    */
-  onShareTap:function(){
+  onShareTap: function () {
+    var itmList = [
+      "分享给微信好友",
+      "分享到朋友圈",
+      "分享到QQ",
+      "分享到微博"
+    ];
     wx.showActionSheet({
-      itemList: [
-        "分享给微信好友",
-        "分享到朋友圈",
-        "分享到QQ",
-        "分享到微博"
-      ],
-      itemColor:"#405f80",
-      success:function(res){
+      itemList: itmList,
+      itemColor: "#405f80",
+      success: function (res) {
         //res.cancel 用户是否点击了取消按钮
         //res.tapIndex 数组元素的下标，从0开始
+        wx.showModal({
+          title: '用户' + itemList[res.tapIndex],
+          content: '用户是否取消' + res.cancel + "现在无法实现分享功能。"
+        })
       }
     })
   },
 
+
+/**
+ * --监听音乐点击
+ */
+  onMusicTap:function(event){
+    var currentPostId = this.data.currentPostId;
+    var postData = postsData.postList[currentPostId];
+    var isPlayingMusic = this.data.isPlayingMusic;
+    if (isPlayingMusic){
+      wx.pauseBackgroundAudio();
+      this.setData({
+        isPlayingMusic:false
+      })
+    }
+    else{
+      wx.playBackgroundAudio({
+        dataUrl: postData.music.url,
+        title: postData.music.title,
+        coverImgUrl: postData.music.coverImg,
+      })
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
+   
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
