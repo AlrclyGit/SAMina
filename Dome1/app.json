@@ -4,14 +4,13 @@
     "pages/home/home",
     "pages/posts/post",
     "pages/posts/post-detail/post-detail"
-   
   ],
   "window": {
     "navigationBarBackgroundColor": "#405f80"
   },
   "tabBar": {
     "borderStyle": "white",
-    "position":"bottom",
+    "position": "bottom",
     "list": [
       {
         "pagePath": "pages/movies/movies",

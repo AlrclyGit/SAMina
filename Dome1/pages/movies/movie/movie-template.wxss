@@ -12,7 +12,7 @@
   padding-bottom: 20rpx;
 }
 
-.movie-title{
+.move-title{
   margin-bottom: 16rpx;
   font-size: 24rpx;
 }

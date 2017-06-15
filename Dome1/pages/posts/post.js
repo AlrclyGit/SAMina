@@ -78,30 +78,30 @@ Page({
   onPostTap: function (event) {
     var postId = event.currentTarget.dataset.postid;
     wx.navigateTo({
-      url:'post-detail/post-detail?id=' + postId
+      url: 'post-detail/post-detail?id=' + postId
     })
   },
 
-/**
- * Barten跳转详情
- */
-onSwiperItemTap:function(event){
-  var postId = event.currentTarget.dataset.postid;
-  wx.navigateTo({
-    url:'post-detail/post-detail?id=' + postId
-  })
-},
+  /**
+   * Barten跳转详情
+   */
+  onSwiperItemTap: function (event) {
+    var postId = event.currentTarget.dataset.postid;
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id=' + postId
+    })
+  },
 
-/**
- * Barten跳转详情（整体）
- */
-onSwiperTap:function(event){
-  //target指的是当前点击的组件 而 currentTarget指的是事件捕获的组件
-  var postId = event.target.dataset.dataset.postid;
-  wx.navigateTo({
-    url: 'post-detail/post-detail?id=' + postId
-  })
-}
+  /**
+   * Barten跳转详情（整体）
+   */
+  onSwiperTap: function (event) {
+    //target指的是当前点击的组件 而 currentTarget指的是事件捕获的组件
+    var postId = event.target.dataset.dataset.postid;
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id=' + postId
+    })
+  }
 
 
 })

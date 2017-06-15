@@ -32,9 +32,9 @@ var local_database = [
     dateTime: "2小时前",
     detail: "真道幸路朗是在外务省工作的干练交涉官。在羽田机场，真道所乘坐的客机正准备起飞时，空中出现了神秘的巨大立方体。“那个东西”急速地巨大化，并吞噬了载有252人的客机。巨大立方体的名字是“卡多”。",
     music: {
-      url: "https://simpleprogrammer.cn/music/hmls.mp3",
+      url: "http://simpleprogrammer.cn/music/hmls.mp3",
       title: "ハイテンション",
-      coverImg: "https://simpleprogrammer.cn/img/hmls.jpg"
+      coverImg: "http://simpleprogrammer.cn/img/hmls.jpg"
     }
   },
   {
