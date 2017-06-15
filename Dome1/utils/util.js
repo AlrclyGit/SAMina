@@ -1,3 +1,6 @@
+/**
+ * --星星数据的方法
+ */
 function convertToStarsArray(stars) {
   var num = stars.toString().substring(0, 1);
   var array = [];
@@ -12,6 +15,25 @@ function convertToStarsArray(stars) {
   return array;
 }
 
+/**
+ * --拉取服务器数据
+ */
+function http(url,callBack) {
+  wx.request({
+    url: url,
+    method: 'GET',
+    header: {
+      'Content-Type': 'json'
+    },
+    success: function (res) {
+      callBack(res.data);
+    },
+    fail: function (res) {
+    }
+  })
+}
+
 module.exports = {
-  convertToStarsArray: convertToStarsArray
+  convertToStarsArray: convertToStarsArray,
+  http: http
 }

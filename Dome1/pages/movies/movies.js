@@ -74,6 +74,15 @@ Page({
     this.setData(readyData);
   },
 
+  /**
+   * --更多详情跳转
+   */
+  onMoreTap:function(event){
+    var category = event.currentTarget. dataset.category;
+    wx.navigateTo({
+      url:"more-movie/more-movie?category=" + category
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
