@@ -1,5 +1,5 @@
 /**
- * --星星数据的方法
+ * 算出星星数的方法
  */
 function convertToStarsArray(stars) {
   var num = stars.toString().substring(0, 1);
@@ -16,7 +16,7 @@ function convertToStarsArray(stars) {
 }
 
 /**
- * --拉取服务器数据
+ * 拉取服务器数据的方法
  */
 function http(url,callBack) {
   wx.request({

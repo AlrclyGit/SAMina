@@ -36,7 +36,6 @@ Page({
         'Content-Type': 'json'
       },
       success: function (res) {
-        console.log(res);
         that.processdoubanData(res.data, settedkey, catetorytitle);
       },
       fail: function (res) {
@@ -46,7 +45,7 @@ Page({
   },
 
   /**
-   * --进行数据处理，然后更新绑定
+   *进行数据处理，然后更新绑定
    */
   processdoubanData: function (moviesDouban, settedkey,catetorytitle) {
     var movies = [];

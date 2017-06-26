@@ -7,7 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    movies: "",
     navigateTitle: "",
+    requestUrl : "",
+    totalCount : 0,
+    isEmpty:true
   },
 
   /**
@@ -28,11 +32,68 @@ Page({
         var dataUrl = app.globalData.doubanBase + "/v2/movie/top250";
         break;
     }
-    http(dataUrl,callBack)
+    this.data.requestUrl = dataUrl;
+    util.http(dataUrl, this.processDoubanData)
   },
 
-  callBack:function(res){
+  /**
+   * 触底加载更多
+   */
+  onScrollLower:function(event){
+    var nexUrl = this.data.requestUrl + 
+    "?start=" + this.data.totalCount + "&count=20";
+    util.http(nexUrl, this.processDoubanData)
+    wx.showNavigationBarLoading()
+  },
 
+  /**
+   * 下拉刷新
+   */
+  onPullDownRefresh: function (event) {
+    var refreshUrl = this.data.requestUrl +
+      "?star=0&count=20";
+    this.data.movies = {};
+    this.data.isEmpty = true;
+    this.data.totalCount = 0;
+    util.http(refreshUrl, this.processDoubanData);
+    wx.showNavigationBarLoading();
+  },
+
+  /**
+   * 对接收的数据进行处理
+   */
+  processDoubanData: function (moviesDouban) {
+    var movies = [];
+    for (var index in moviesDouban.subjects) {
+      var subject = moviesDouban.subjects[index];
+      var title = subject.title;
+      if (title.length >= 6) {
+        title = title.substring(0, 6) + '…';
+      }
+      var temp = {
+        stars: util.convertToStarsArray(subject.rating.stars),
+        title: title,
+        average: subject.rating.average,
+        coverageUrl: subject.images.large,
+        movieId: subject.id,
+        ztitile: moviesDouban.title
+      }
+      movies.push(temp)
+    }
+    //如果要绑定新加载的数据，那么需要同旧有的数据合并在一起
+    var totalMovies = {}
+    if(!this.data.isEmpty){
+      totalMovies = this.data.movies.concat(movies);
+    }
+    else{
+      totalMovies = movies;
+      this.data.isEmpty = false;
+    }
+    this.setData({
+      movies: totalMovies
+    });
+    this.data.totalCount += 20;
+    wx.hideNavigationBarLoading();
   },
 
   /**
