@@ -9,7 +9,7 @@ Page({
    * --页面的初始数据
    */
   data: {
-    isPlayingMusic:false
+    isPlayingMusic: false
   },
 
 
@@ -38,7 +38,7 @@ Page({
       wx.setStorageSync("posts_collected", postsCollected);
     }
 
-    if (app.globalData.g_isPalyingMusic && app.globalData.g_currentMusicPolstId === postId){
+    if (app.globalData.g_isPalyingMusic && app.globalData.g_currentMusicPolstId === postId) {
       this.setData({
         isPlayingMusic: true
       })
@@ -52,24 +52,38 @@ Page({
   /**
    * --监听音乐播放
    */
-  setMusicMonitor:function(){
-     var that = this;
-     wx.onBackgroundAudioPlay(function () {
-       that.setData({
-         isPlayingMusic: true
-       })
-       app.globalData.g_isPalyingMusic = true
-       app.globalData.g_currentMusicPolstId = that.data.currentPostId
-     });
+  setMusicMonitor: function () {
 
-     wx.onBackgroundAudioPause(function () {
-       that.setData({
-         isPlayingMusic: false
-       })
-       app.globalData.g_isPalyingMusic = false
-       app.globalData.g_currentMusicPolstId = null;
-     });
-   },
+    var that = this;
+
+    //监听音乐播放。
+    wx.onBackgroundAudioPlay(function () {
+      that.setData({
+        isPlayingMusic: true
+      })
+      app.globalData.g_isPalyingMusic = true
+      app.globalData.g_currentMusicPolstId = that.data.currentPostId
+    });
+
+    //监听音乐暂停。
+    wx.onBackgroundAudioPause(function () {
+      that.setData({
+        isPlayingMusic: false
+      })
+      app.globalData.g_isPalyingMusic = false
+      app.globalData.g_currentMusicPolstId = null;
+    });
+
+    //监听音乐停止。
+    wx.onBackgroundAudioStop(function () {
+      that.setData({
+        isPlayingMusic: false
+      })
+      app.globalData.g_isPalyingMusic = false
+      app.globalData.g_currentMusicPolstId = null;
+    });
+
+  },
 
   /**
    * --监听收藏点击
@@ -175,30 +189,26 @@ Page({
   },
 
 
-/**
- * --监听音乐点击
- */
-  onMusicTap:function(event){
+  /**
+   * --监听音乐点击
+   */
+  onMusicTap: function (event) {
     var currentPostId = this.data.currentPostId;
     var postData = postsData.postList[currentPostId];
     var isPlayingMusic = this.data.isPlayingMusic;
-    if (isPlayingMusic){
+    if (isPlayingMusic) {
       wx.pauseBackgroundAudio();
-      this.setData({
-        isPlayingMusic:false
-      })
+
     }
-    else{
+    else {
       wx.playBackgroundAudio({
         dataUrl: postData.music.url,
         title: postData.music.title,
         coverImgUrl: postData.music.coverImg,
       })
-      this.setData({
-        isPlayingMusic: true
-      })
+
     }
-   
+
   },
 
   /**

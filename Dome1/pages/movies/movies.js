@@ -8,7 +8,10 @@ Page({
   data: {
     inTheaters: {},
     comingSoon: {},
-    top250: {}
+    top250: {},
+    searchResult: {},
+    containerShow: true,
+    searchPannelShow: false,
   },
 
   /**
@@ -18,14 +21,13 @@ Page({
     var inTheatersUrl = app.globalData.doubanBase + "/v2/movie/in_theaters" + "?&start=0&count=3";
     var comingSoonUrl = app.globalData.doubanBase + "/v2/movie/coming_soon" + "?&start=0&count=3";
     var top250Url = app.globalData.doubanBase + "/v2/movie/top250" + "?start=0&count=3";
-
-    this.getMovieListData(inTheatersUrl, 'inTheaters','正在热映');
-    this.getMovieListData(comingSoonUrl, 'comingSoon','即将上映');
-    this.getMovieListData(top250Url, 'top250','豆瓣TOP200');
+    this.getMovieListData(inTheatersUrl, 'inTheaters', '正在热映');
+    this.getMovieListData(comingSoonUrl, 'comingSoon', '即将上映');
+    this.getMovieListData(top250Url, 'top250', '豆瓣TOP200');
   },
 
   /**
-   * --拉取服务器数据
+   * --向服务器发送请求
    */
   getMovieListData: function (url, settedkey, catetorytitle) {
     var that = this;
@@ -45,9 +47,38 @@ Page({
   },
 
   /**
+   * 监听搜索的关闭图片的点击事件
+   */
+  onCancelImgTap: function (event) {
+    this.setData({
+      containerShow: true,
+      searchPannelShow: false,
+    })
+  },
+
+  /**
+   * 监听搜索的点击事件
+   */
+  onBindFocus: function (event) {
+    this.setData({
+      containerShow: false,
+      searchPannelShow: true
+    })
+  },
+
+  /**
+   * 监听搜索的值改变
+   */
+  onBindBlur: function (event) {
+    var text = event.detail.value;
+    var searchUrl = app.globalData.doubanBase + "/v2/movie/search?q=" + text;
+    this.getMovieListData(searchUrl, "searchResult", "");
+  },
+
+  /**
    *进行数据处理，然后更新绑定
    */
-  processdoubanData: function (moviesDouban, settedkey,catetorytitle) {
+  processdoubanData: function (moviesDouban, settedkey, catetorytitle) {
     var movies = [];
     for (var index in moviesDouban.subjects) {
       var subject = moviesDouban.subjects[index];
@@ -76,10 +107,20 @@ Page({
   /**
    * --更多详情跳转
    */
-  onMoreTap:function(event){
-    var category = event.currentTarget. dataset.category;
+  onMoreTap: function (event) {
+    var category = event.currentTarget.dataset.category;
     wx.navigateTo({
-      url:"more-movie/more-movie?category=" + category
+      url: "more-movie/more-movie?category=" + category
+    })
+  },
+
+  /**
+   * --监听电影块的点击
+   */
+  onMovieTap: function (event) {
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: "movie-detail/movie-detail?id=" + movieId
     })
   },
 

@@ -13,9 +13,9 @@ var local_database = [
     dateTime: "12小时前",
     detail: "《情色漫画老师》是日本轻小说作家伏见司继《我的妹妹哪有这么可爱！》完结之后的轻小说新作，插画同样由负责《我的妹妹哪有这么可爱！》插画的神崎广绘制。在2013年10月6日的“电击文库20周年纪念活动”上，伏见司公布了最新执笔小说《情色漫画老师》的消息[1]  。小说第1卷于2013年12月10日面市。在动画版开播前，1~6卷累计发行部数约为60万册[2]  ，在2017年4月动画版开播时，1~8卷累计发行量突破100万册[3]  。",
     music:{
-      url:"https://simpleprogrammer.cn/music/akb.mp3",
+      url:"https://alrcly.com/weixin/adrenaline.mp3",
       title:"ハイテンション",
-      coverImg:"https://simpleprogrammer.cn/img/yll.jpg"
+      coverImg:"https://alrcly.com/weixin/adrenaline.jpg"
     }
   },
   {
@@ -32,9 +32,9 @@ var local_database = [
     dateTime: "2小时前",
     detail: "真道幸路朗是在外务省工作的干练交涉官。在羽田机场，真道所乘坐的客机正准备起飞时，空中出现了神秘的巨大立方体。“那个东西”急速地巨大化，并吞噬了载有252人的客机。巨大立方体的名字是“卡多”。",
     music: {
-      url: "http://simpleprogrammer.cn/music/hmls.mp3",
+      url: "https://alrcly.com/weixin/adrenaline.mp3",
       title: "ハイテンション",
-      coverImg: "http://simpleprogrammer.cn/img/hmls.jpg"
+      coverImg: "https://alrcly.com/weixin/adrenaline.jpg"
     }
   },
   {
