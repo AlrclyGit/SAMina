@@ -9,9 +9,19 @@ Page({
   data: {
     movies: "",
     navigateTitle: "",
-    requestUrl : "",
-    totalCount : 0,
-    isEmpty:true
+    requestUrl: "",
+    totalCount: 0,
+    isEmpty: true
+  },
+
+  /**
+   * --监听电影块的点击
+   */
+  onMovieTap: function (event) {
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: "../movie-detail/movie-detail?id=" + movieId
+    })
   },
 
   /**
@@ -39,9 +49,9 @@ Page({
   /**
    * 触底加载更多
    */
-  onScrollLower:function(event){
-    var nexUrl = this.data.requestUrl + 
-    "?start=" + this.data.totalCount + "&count=20";
+  onScrollLower: function (event) {
+    var nexUrl = this.data.requestUrl +
+      "?start=" + this.data.totalCount + "&count=20";
     util.http(nexUrl, this.processDoubanData)
     wx.showNavigationBarLoading()
   },
@@ -82,10 +92,10 @@ Page({
     }
     //如果要绑定新加载的数据，那么需要同旧有的数据合并在一起
     var totalMovies = {}
-    if(!this.data.isEmpty){
+    if (!this.data.isEmpty) {
       totalMovies = this.data.movies.concat(movies);
     }
-    else{
+    else {
       totalMovies = movies;
       this.data.isEmpty = false;
     }

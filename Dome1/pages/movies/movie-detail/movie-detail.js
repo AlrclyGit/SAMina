@@ -23,8 +23,11 @@ Page({
   /**
    * 对接收的数据进行处理
    */
-  processDoubanData: function (data) {
-    if (!data){
+  processDoubanData: function (data,code) {
+    if(code==500){
+      console.log("这是服务器的内部错误和我没关系。");
+      return;
+    }else if (!data){
       return;
     }
     var director = {
@@ -39,14 +42,15 @@ Page({
       director.name = data.directors[0].name;
       director.id = data.directors[0].id;
     }
+    
     var movie = {
       movieImg: data.images ? data.images.large : "",
       country: data.countries[0],
       title: data.title,
       originalTitle: data.original_title,
-      wishCount: data.wish_conut,
+      wishCount: data.wish_count,
       commentCount: data.comments_count,
-      year: data.yesr,
+      year: data.year,
       generes: data.genres.join("、"),
       stars: util.convertToStarsArray(data.rating.stars),
       score: data.rating.average,

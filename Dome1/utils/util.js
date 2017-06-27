@@ -26,7 +26,7 @@ function http(url, callBack) {
       'Content-Type': 'json'
     },
     success: function (res) {
-      callBack(res.data);
+      callBack(res.data,res.statusCode);
     },
     fail: function (res) {
     }
